@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Build, Test, Check Styles, PMD, Spot Bugs
     runs-on: ubuntu-latest
 
     steps:
