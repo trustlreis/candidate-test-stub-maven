@@ -1,0 +1,85 @@
+# Maven specific files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Eclipse specific files
+*.classpath
+*.project
+*.settings/
+
+# IntelliJ IDEA specific files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# NetBeans specific files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code specific files
+.vscode/
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# General IDE files
+*.swp
+*~
+*.swo
+*.tmp
+
+# Log files
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+
+# Build directories
+build/
+dist/
+
+# Gradle specific files
+.gradle/
+build/
+
+# Generated files
+out/
+generated/
+generated-sources/
+generated-test-sources/
+
+# Coverage reports
+*.eml
+.eml/
+*.xml
+.xml/
+.coverage
+.coverage/
+.h2/
+.h2
+
+# Ignore test reports
+/test-output/
+
+# Maven wrapper files
+.mvn/
+mvnw
+mvnw.cmd
