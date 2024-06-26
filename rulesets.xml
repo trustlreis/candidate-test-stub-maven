@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Custom Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+                             http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    
+    <description>
+        This is a custom ruleset for the Maven project to enforce coding standards and detect potential issues.
+    </description>
+
+    <!-- Basic rules -->
+    <rule ref="category/java/bestpractices.xml/UnusedImports"/>
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateField"/>
+    <rule ref="category/java/errorprone.xml/UnusedLocalVariable"/>
+    <rule ref="category/java/errorprone.xml/UnusedPrivateMethod"/>
+    <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyFinallyBlock"/>
+    <rule ref="category/java/errorprone.xml/EmptyIfStmt"/>
+    <rule ref="category/java/errorprone.xml/EmptyWhileStmt"/>
+    <rule ref="category/java/errorprone.xml/EmptyTryBlock"/>
+    <rule ref="category/java/codestyle.xml/ControlStatementBraces"/>
+    <rule ref="category/java/codestyle.xml/FieldDeclarationsShouldBeAtStartOfClass"/>
+    <rule ref="category/java/codestyle.xml/MethodArgumentCouldBeFinal"/>
+    <rule ref="category/java/design.xml/FinalClassCouldBeStatic"/>
+    <rule ref="category/java/design.xml/ImmutableField"/>
+    <rule ref="category/java/documentation.xml/CommentRequired"/>
+    
+    <!-- Metrics rules -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="reportLevel" value="10"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/ExcessiveMethodLength">
+        <properties>
+            <property name="maxLines" value="100"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/ExcessiveClassLength">
+        <properties>
+            <property name="maxLines" value="1000"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/TooManyFields">
+        <properties>
+            <property name="maxFields" value="20"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/TooManyMethods">
+        <properties>
+            <property name="maxMethods" value="10"/>
+        </properties>
+    </rule>
+
+    <!-- Custom rules -->
+    <!-- Add any custom rules here -->
+
+</ruleset>

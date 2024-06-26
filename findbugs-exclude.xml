@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Exclude specific classes -->
+    <Match>
+        <Class name="com.mycompany.app.ExcludedClass"/>
+    </Match>
+
+    <!-- Exclude specific methods in a class -->
+    <Match>
+        <Class name="com.mycompany.app.AnotherClass">
+            <Method name="excludedMethod"/>
+        </Class>
+    </Match>
+
+    <!-- Exclude specific bug patterns -->
+    <Match>
+        <Bug pattern="NM_METHOD_NAMING_CONVENTION"/>
+    </Match>
+
+    <!-- Exclude specific bug patterns in a package -->
+    <Match>
+        <Package name="com.mycompany.app.unused"/>
+        <Bug pattern="UUF_UNUSED_FIELD"/>
+    </Match>
+
+    <!-- Exclude bugs by their unique identifiers -->
+    <Bug code="SBSC_USE_STRINGBUFFER_CONCATENATION" category="PERFORMANCE"/>
+</FindBugsFilter>
