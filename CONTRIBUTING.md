@@ -74,4 +74,4 @@
 6. **Push changes**: Push your branch with `git push origin BRANCH-NAME`.
 7. **Submit pull request**: Go to the original repository, create a new pull request, and fill in the details.
 
-By following these steps, you'll be able to fork the repository, make changes, and submit a pull request for review.
+Once the PR is created, your code will be analyzed by our team.
