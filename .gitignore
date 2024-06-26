@@ -69,7 +69,6 @@ generated-test-sources/
 # Coverage reports
 *.eml
 .eml/
-*.xml
 .xml/
 .coverage
 .coverage/
