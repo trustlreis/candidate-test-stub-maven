@@ -18,7 +18,7 @@ jobs:
       # This step references the directory that contains the action.
       - uses: sshnaidm/gpt-code-review-action@v2.0
         with:
-          github-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        #   github-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
           openai-key: ${{ secrets.OPENAI_TOKEN }}
           model: 'gpt-4o'
           # max-length: 8000
