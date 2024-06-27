@@ -25,11 +25,10 @@ jobs:
     #     #   custom_prompt: "" 
 
     steps:
-      - name: OpenAI ChatGPT Code Review
-        uses: adshao/chatgpt-code-review-action@v0.2.4
-        with:
-           PROGRAMMING_LANGUAGE: 'Java'
-           REVIEW_COMMENT_PREFIX: 'chatgpt:'
-           FULL_REVIEW_COMMENT: 'chatgpt'
-           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: OpenAI PR Review
+        uses: cawcaw253/ai-review-action@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_TOKEN }}
+          LANGUAGE: "english"
+          MODEL: "gpt-4o"
