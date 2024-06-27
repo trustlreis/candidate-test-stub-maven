@@ -48,11 +48,11 @@ jobs:
             githubRepository: ${{ github.repository }}
             githubPullRequestNumber: ${{ github.event.pull_request.number }}
             gitCommitHash: ${{ github.event.pull_request.head.sha }}
-            temperature: "0.2"
-            maxNewTokens: "250"
+            temperature: "0.5"
+            maxNewTokens: "2500"
             topK: "50"
             topP: "0.95"
             pullRequestDiff: |-
               $(cat $DIFF)
-            pullRequestChunkSize: "3500"
+            pullRequestChunkSize: "7000"
             logLevel: "DEBUG"
