@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: OpenAI ChatGPT Code Review
-        uses: adshao/chatgpt-code-review-action@v0.2.5
+        uses: adshao/chatgpt-code-review-action@v0.2.4
         with:
            PROGRAMMING_LANGUAGE: 'Java'
            REVIEW_COMMENT_PREFIX: 'chatgpt:'
