@@ -28,11 +28,11 @@ jobs:
         - name: Checkout Repor
           uses: actions/checkout@v3
 
-        - name: AI Code Reviewer
-          uses: hohyon-ryu/ai-codereviewer@code_review
+        - name: OpenAI ChatGPT Code Review
+          uses: manjunathsb10/chatgpt-code-review-action@v0.2
           with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # The GITHUB_TOKEN is there by default so you just need to keep it like it is and not necessarily need to add it as secret as it will throw an error. [More Details](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret)
-            OPENAI_API_KEY: ${{ secrets.OPENAI_TOKEN }}
-            OPENAI_API_MODEL: "gpt-4o" 
-            exclude: "**/*.json, **/*.md" 
-            language: "english" 
+            PROGRAMMING_LANGUAGE: 'JavaScript'
+            OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            FULL_REVIEW_COMMENT: 'chatgpt'
+            REVIEW_COMMENT_PREFIX: 'chatgpt:'
