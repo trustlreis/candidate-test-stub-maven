@@ -12,13 +12,6 @@ jobs:
 
     steps:
       
-      - uses: fiqryq/rebotai@v1.2.0
-        with:
-          gh-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-          openai-api-key: ${{ secrets.OPENAI_TOKEN }}
-          model: "gpt-4o"
-          language: "english"
-
     #   - name: Checkout Repo
     #     uses: actions/checkout@v3
 
@@ -32,15 +25,14 @@ jobs:
     #       language: "english" # Optional: defaults to "english"
 
           
-    # steps:
-    #     - name: Checkout Repor
-    #       uses: actions/checkout@v3
+        - name: Checkout Repor
+          uses: actions/checkout@v3
 
-    #     - name: OpenAI ChatGPT Code Review
-    #       uses: manjunathsb100/chatgpt-code-review-action@1.0.7
-    #       with:
-    #         PROGRAMMING_LANGUAGE: 'JavaScript'
-    #         OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-    #         GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-    #         FULL_REVIEW_COMMENT: 'chatgpt'
-    #         REVIEW_COMMENT_PREFIX: 'chatgpt:'
+        - name: OpenAI ChatGPT Code Review
+          uses: manjunathsb100/chatgpt-code-review-action@1.0.7
+          with:
+            PROGRAMMING_LANGUAGE: 'Java'
+            OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+            FULL_REVIEW_COMMENT: 'chatgpt'
+            REVIEW_COMMENT_PREFIX: 'chatgpt:'
