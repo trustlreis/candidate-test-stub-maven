@@ -33,6 +33,6 @@ jobs:
           with:
             PROGRAMMING_LANGUAGE: 'JavaScript'
             OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
             FULL_REVIEW_COMMENT: 'chatgpt'
             REVIEW_COMMENT_PREFIX: 'chatgpt:'
