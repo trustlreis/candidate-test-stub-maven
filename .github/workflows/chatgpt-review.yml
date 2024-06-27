@@ -12,18 +12,12 @@ jobs:
 
     steps:
       
-      # This step checks out a copy of your repository.
-      - uses: actions/checkout@v3
-
-      # This step references the directory that contains the action.
-      - uses: sshnaidm/gpt-code-review-action@v2.0
+      - uses: fiqryq/rebotai@{version}
         with:
-        #   github-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-          openai-key: ${{ secrets.OPENAI_TOKEN }}
-          model: 'gpt-4o'
-          # max-length: 8000
-          prompt: 'Please explain what this code does (it is in Java but might contain some XML,JSON,YAML files too), and then perform a complete code review pointing improvement spots and potential bugs.'
-          # post-if-error: false
+          gh-token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          openai-api-key: ${{ secrets.OPENAI_TOKEN }}
+          model: "gpt-4o"
+          language: "english"
 
     #   - name: Checkout Repo
     #     uses: actions/checkout@v3
