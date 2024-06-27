@@ -11,11 +11,17 @@ jobs:
     name: ChatGPT Code Review
 
     steps:
-      - name: Review Pull Request
-        uses: JensAstrup/ai-reviewer@v1.0.2
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: AI Code Reviewer
+        uses: your-username/ai-code-reviewer@code_review
         with:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }} # The GITHUB_TOKEN is there by default so you just need to keep it like it is and not necessarily need to add it as secret as it will throw an error. [More Details](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret)
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_MODEL: "gpt-4" # Optional: defaults to "gpt-4"
+          exclude: "**/*.json, **/*.md" # Optional: exclude patterns separated by commas. defaults to  "**/*.json, **/*.md, yarn.lock, package-lock.json"
+          language: "english" # Optional: defaults to "english"
 
     # steps:
     #     - name: Checkout Repor
