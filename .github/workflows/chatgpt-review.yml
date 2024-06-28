@@ -11,14 +11,34 @@ jobs:
     name: ChatGPT Code Review
 
     steps:
-        - name: Checkout Repor
-          uses: actions/checkout@v3
+      - name: Check if both secrets are available
+        id: check_secrets
+        run: |
+          if [ -z "${{ secrets.OPENAI_TOKEN }}" ]; then
+            echo "OPENAI_TOKEN not available"
+            echo "::set-output name=openai_secret_available::false"
+          else
+            echo "OPENAI_TOKEN is available"
+            echo "::set-output name=openai_secret_available::true"
+          fi
+          if [ -z "${{ secrets.CUSTOM_GITHUB_TOKEN }}" ]; then
+            echo "CUSTOM_GITHUB_TOKEN not available"
+            echo "::set-output name=custom_github_secret_available::false"
+          else
+            echo "CUSTOM_GITHUB_TOKEN is available"
+            echo "::set-output name=custom_github_secret_available::true"
+          fi
 
-        - name: OpenAI ChatGPT Code Review
-          uses: manjunathsb100/chatgpt-code-review-action@1.0.7
-          with:
-            PROGRAMMING_LANGUAGE: 'Java'
-            OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-            GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-            FULL_REVIEW_COMMENT: 'chatgpt'
-            REVIEW_COMMENT_PREFIX: 'chatgpt:'
+      - name: Checkout code
+        if: steps.check_secrets.outputs.openai_secret_available == 'true' && steps.check_secrets.outputs.custom_github_secret_available == 'true'
+        uses: actions/checkout@v3
+
+      - name: OpenAI ChatGPT Code Review
+        if: steps.check_secrets.outputs.openai_secret_available == 'true' && steps.check_secrets.outputs.custom_github_secret_available == 'true'
+        uses: manjunathsb100/chatgpt-code-review-action@1.0.7
+        with:
+          PROGRAMMING_LANGUAGE: 'Java'
+          OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          FULL_REVIEW_COMMENT: 'chatgpt'
+          REVIEW_COMMENT_PREFIX: 'chatgpt:'

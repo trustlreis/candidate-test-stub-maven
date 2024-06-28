@@ -14,27 +14,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check if secret is available
+        id: check_secret
+        run: |
+          if [ -z "${{ secrets.SONAR_TOKEN }}" ]; then
+            echo "SONAR_TOKEN not available"
+            echo "::set-output name=secret_available::false"
+          else
+            echo "SONAR_TOKEN is available"
+            echo "::set-output name=secret_available::true"
+          fi
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        if: steps.check_secret.outputs.secret_available == 'true'
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
       - name: Set up JDK 17
+        if: steps.check_secret.outputs.secret_available == 'true'
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
+
       - name: Cache SonarCloud packages
+        if: steps.check_secret.outputs.secret_available == 'true'
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
       - name: Cache Maven packages
         uses: actions/cache@v3
+        if: steps.check_secret.outputs.secret_available == 'true'
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
       - name: Build and analyze
+        if: steps.check_secret.outputs.secret_available == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
