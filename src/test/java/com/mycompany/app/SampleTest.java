@@ -13,9 +13,9 @@ public class SampleTest {
     }
 
     @Test
-    public void testSubstraction() {
-        int substraction = 4 - 2;
-        assertEquals(2, substraction, "4 - 2 should equal 2");
+    public void testSubtraction() {
+        int subtraction = 4 - 2;
+        assertEquals(2, subtraction, "4 - 2 should equal 2");
     }
 
 }
