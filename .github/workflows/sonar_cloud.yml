@@ -12,6 +12,9 @@ jobs:
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    if: env.SONAR_TOKEN != ''  
 
     steps:
       - uses: actions/checkout@v3

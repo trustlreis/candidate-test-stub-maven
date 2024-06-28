@@ -9,7 +9,9 @@ jobs:
   code_review_job:
     runs-on: ubuntu-latest
     name: ChatGPT Code Review
-
+    env:
+      OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+    if: env.OPENAI_TOKEN != ''  
     steps:
         - name: Checkout Repor
           uses: actions/checkout@v3
